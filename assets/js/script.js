@@ -47,7 +47,7 @@ $(function () {
     function handleTracksResponse(response) {
         cache.tracks.push(response.collection);
         drawItems(cache.tracks[cache.offset]);
-        // is multiple page result?
+        // is multiple-pages result?
         if (response.next_href) {
             cache.query.push(response.next_href);
             cache.$body.addClass('show-pagination');
@@ -94,6 +94,10 @@ $(function () {
         /* bind events */
 
         cache.$list.on('click', 'li', function () {
+            // detect no-results
+            if (cache.query.length && cache.tracks[0].length === 0) {
+                return;
+            }
             /*
                 SC is doing some canvas calculations and cannot do it
                 while it's widget is hidden with display-none. :\

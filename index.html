@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <title>Soundcloud Player</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="assets/css/styles.css" rel="stylesheet">
+</head>
+
+<body class="show-loader">
+    <main class="clearfix">
+        <section class="player" style="visibility: hidden">
+            <div class="player-loader loader">Loading...</div>
+            <iframe id="sc-widget" width="100%" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F1848538&show_artwork=true"></iframe>
+        </section>
+        <section>
+            <input name="search" type="text" placeholder="search Soundcloud...">
+            <ul></ul>
+            <div class="pagination clearfix">
+                <i class="next" style="display: none">next&nbsp;&rsaquo;</i>
+                <i class="prev" style="display: none">&lsaquo;&nbsp;previous</i>
+            </div>
+        </section>
+    </main>
+    <div class="global-loader loader">Loading...</div>
+    <div class="overlay"></div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>    
+    <script src="assets/js/vendor/jquery.ba-throttle-debounce.min.js"></script>
+    <script src="assets/js/vendor/soundcloud/sdk-3.1.2.js"></script>
+    <script src="assets/js/vendor/soundcloud/api.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>

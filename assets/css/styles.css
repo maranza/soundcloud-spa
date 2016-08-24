@@ -44,6 +44,8 @@
 * {
     margin: 0;
     padding: 0;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
 html {
@@ -60,9 +62,15 @@ html *:before {
 }
 
 body {
-    font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
+    font-family: 'Gotham SSm A', 'Gotham SSm B', Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
     min-height: 100vh;
     background-color: whitesmoke;
+    margin: 0;
+    padding: 0;
+}
+
+body * {
+    font-family: inherit;
 }
 
 body.show-loader .global-loader {
@@ -95,10 +103,13 @@ body.show-pagination .pagination {
     display: block;
 }
 
+
+/*
 body.show-grid-view ul:not(:empty):not(.no-results) {
     padding-left: 0;
     list-style-type: none;
 }
+*/
 
 body.show-grid-view li {
     float: left;
@@ -106,6 +117,7 @@ body.show-grid-view li {
     height: 100px;
     margin-right: 10px;
     font-size: 0;
+    text-decoration: none;
 }
 
 body.show-grid-view li .thumbnail {
@@ -116,9 +128,11 @@ body.show-grid-view li.no-artwork .thumbnail {
     font-size: initial;
     display: table-cell;
     vertical-align: middle;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     text-align: center;
     text-transform: capitalize;
+    text-shadow: 0 0 4px #000;
+    border: 1px solid lightgray;
 }
 
 body.show-grid-view li.no-artwork:hover .thumbnail {
@@ -140,10 +154,6 @@ body.show-grid-view li:nth-child(n+7) {
 
 body.show-grid-view li:not(:first-child) {
     padding-top: 0;
-}
-
-body * {
-    font-family: inherit;
 }
 
 main {
@@ -176,7 +186,6 @@ section.with-pagination .pagination {
 }
 
 .btn {
-    font-family: 'Gotham SSm A', 'Gotham SSm B', Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
     font-style: normal;
     text-transform: uppercase;
     cursor: pointer;
@@ -186,7 +195,7 @@ section.with-pagination .pagination {
 .toggle-grid-view {
     outline: 0;
     margin-top: 10px;
-    font-size: 0.8em;
+    font-size: 0.75em;
     color: darkgray;
 }
 
@@ -243,21 +252,31 @@ input[type=text] {
 }
 
 ::-webkit-input-placeholder {
-    font-family: 'Gotham SSm A', 'Gotham SSm B', Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
     /*    font-style: italic;*/
     text-transform: capitalize;
 }
 
 ul:not(:empty) {
     margin-top: 10px;
+    list-style-type: none;
 }
 
+
+/*
 ul:not(:empty):not(.no-results) {
     padding-left: 20px;
+    list-style-type: none;
+}
+*/
+
+li {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 li .thumbnail {
     display: none;
+    text-decoration: none;
     background-color: darkslateblue;
     /*    background-color: #f50;*/
     color: #fff;
@@ -266,13 +285,8 @@ li .thumbnail {
     width: inherit;
 }
 
-li:not(.no-results) {
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-li:not(.no-results).no-artwork {
-    text-decoration: none;
+.truncated {
+    text-decoration: inherit;
 }
 
 li:not(:first-child) {
@@ -300,10 +314,11 @@ li:hover {
     font-weight: 600;
 }
 
-.no-results {
+
+/*.no-results {
     padding-left: 0;
     list-style-type: none;
-}
+}*/
 
 .no-results li {
     text-decoration: none;
@@ -318,7 +333,6 @@ li:hover {
 }
 
 .pagination i {
-    font-family: 'Gotham SSm A', 'Gotham SSm B', Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
     cursor: pointer;
     font-style: normal;
     line-height: 2.5rem;

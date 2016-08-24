@@ -37,7 +37,7 @@ $(function () {
         if (tracks.length) {
             tracks.forEach(function (track) {
                 // append might be quicker here (untested)
-                markup += '<li class="' + (!track.artwork_url ? ' no-artwork' : '') + '" title="' + track.title + '"><span class="thumbnail" style="background-image: url(' + (track.artwork_url || '') + ')"><span class="truncated">' + track.title.substring(0, 10) + '</span></span>' + track.title + '</li>';
+                markup += '<li class="' + (!track.artwork_url ? 'no-artwork' : '') + '" title="' + track.title + '"><span class="thumbnail" style="background-image: url(' + (track.artwork_url || '') + ')"><span class="truncated">' + track.title.substring(0, 10) + '</span></span>' + track.title + '</li>';
             });
         } else {
             markup = '<li>no results found</li>';
@@ -157,7 +157,10 @@ $(function () {
             cache.$prev.toggle(true);
         });
 
-        cache.$input.keyup($.debounce(500, function () {
+        cache.$input.keyup($.debounce(500, function () {            
+            if (this.value === '') {
+                return;
+            }
             getTracks(this.value);
         }));
 

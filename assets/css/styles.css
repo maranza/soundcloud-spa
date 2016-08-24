@@ -154,6 +154,11 @@ section.with-pagination .pagination {
     outline: 0;
     margin-top: 10px;
     font-size: 0.8em;
+    color: darkgray;
+}
+
+.toggle-grid-view:hover {
+    color: #666;
 }
 
 .player {

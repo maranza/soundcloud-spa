@@ -20,7 +20,16 @@ $(function () {
         $player: $('.player'),
         $prev: $('.prev'),
         $next: $('.next'),
-        $input: $('[name = search]')
+        $input: $('[name = search]'),
+        queryOptions: {
+            limit: 30,
+        },
+        playerOptions: {
+            show_comments: false,
+            sharing: false,
+            buying: false,
+            download: false,
+        }
     };
 
     function drawItems(tracks) {
@@ -28,20 +37,20 @@ $(function () {
         if (tracks.length) {
             tracks.forEach(function (track) {
                 // append might be quicker here (untested)
-                markup += '<li>' + track.title + '</li>';
+                markup += '<li class="' + (!track.artwork_url ? ' no-artwork' : '') + '" title="' + track.title + '"><span class="thumbnail" style="background-image: url(' + (track.artwork_url || '') + ')"><span class="truncated">' + track.title.substring(0, 10) + '</span></span>' + track.title + '</li>';
             });
         } else {
             markup = '<li>no results found</li>';
+            cache.$body.removeClass('show-grid-view');
         }
         cache.$list.toggleClass('no-results', !tracks.length).html(markup);
     }
 
     function getQueryURI(query) {
-        return '/tracks?' + $.param({
+        return '/tracks?' + $.param($.extend({}, cache.queryOptions, {
             q: query,
-            limit: 10,
             linked_partitioning: 1
-        });
+        }));
     }
 
     function handleTracksResponse(response) {
@@ -71,6 +80,10 @@ $(function () {
         promise.then(handleTracksResponse).then(callback || function () {});
     }
 
+    function isEmptyResult() {
+        return cache.query.length && cache.tracks[0].length === 0;
+    }
+
     /* beam me up scotty! */
 
     $('iframe').attr('height', parseFloat(cache.$player.css('height')));
@@ -95,7 +108,7 @@ $(function () {
 
         cache.$list.on('click', 'li', function () {
             // detect no-results
-            if (cache.query.length && cache.tracks[0].length === 0) {
+            if (isEmptyResult()) {
                 return;
             }
             /*
@@ -116,7 +129,7 @@ $(function () {
             cache.$main.css('background-image', 'url(' + (track.artwork_url || '') + ')');
             cache.$body.addClass('show-player-loader');
             cache.$player.css('visibility', 'visible');
-            cache.player.load(track.permalink_url, {
+            cache.player.load(track.permalink_url, $.extend({}, cache.playerOptions, {
                 callback: function () {
                     cache.$body.removeClass('show-player-loader');
                     if (!cache.isPlayerVisible) {
@@ -124,7 +137,7 @@ $(function () {
                     }
                     cache.player.play();
                 }
-            });
+            }));
         });
 
         cache.$prev.click(function () {
@@ -148,7 +161,14 @@ $(function () {
             getTracks(this.value);
         }));
 
+        $('.toggle-grid-view').click(function () {
+            if (isEmptyResult()) {
+                return;
+            }
+            cache.$body.toggleClass('show-grid-view');
+        });
+
         // now test it ;)
-        cache.$input.val('u2').keyup();
+        cache.$input.val('modulation').keyup();
     });
 });

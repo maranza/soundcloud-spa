@@ -64,16 +64,70 @@ body.show-pagination .pagination {
     display: block;
 }
 
+body.show-grid-view ul:not(:empty):not(.no-results) {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+body.show-grid-view li {
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+    font-size: 0;
+}
+
+body.show-grid-view li .thumbnail {
+    background-color: #f50;
+    background-size: cover;
+    height: inherit;
+    width: inherit;
+    display: block;
+}
+
+body.show-grid-view li.no-artwork .thumbnail {
+    font-size: initial;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 0.7rem;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+body.show-grid-view li.no-artwork:hover .thumbnail {
+    background-color: brown;
+}
+
+body.show-grid-view li:hover .thumbnail {
+    background-blend-mode: screen;
+}
+
+body.show-grid-view li:nth-child(6n+0) {
+    margin-right: 0;
+}
+
+body.show-grid-view li:nth-child(n+7) {
+    margin-top: 10px;
+}
+
+body.show-grid-view li:not(:first-child) {
+    padding-top: 0;
+}
+
 body * {
     font-family: inherit;
 }
 
 main {
     min-height: inherit;
+    width: 670px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 0 10px 10px;
     background-blend-mode: overlay;
     background-size: cover;
     background-color: whitesmoke;
+    box-shadow: 0 0 15px gray;
 }
 
 section + section {
@@ -82,6 +136,27 @@ section + section {
 
 section.with-pagination .pagination {
     display: block;
+}
+
+.icon {
+    font-style: normal;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.icon:not(button):not(span):not(i) {
+    display: inline-block;
+}
+
+.clear-button {
+    background-color: transparent;
+    border-width: 0;
+}
+
+.toggle-grid-view {
+    outline: 0;
+    margin-top: 10px;
+    font-size: 0.8em;
 }
 
 .player {
@@ -117,6 +192,7 @@ section.with-pagination .pagination {
 
 iframe {
     display: block;
+    width: 100%;
     box-shadow: 0px 0px 2px #ccc;
     border-radius: 4px;
 }
@@ -141,6 +217,10 @@ ul:not(:empty) {
 
 ul:not(:empty):not(.no-results) {
     padding-left: 20px;
+}
+
+li .thumbnail {
+    display: none;
 }
 
 li:not(.no-results) {
@@ -184,8 +264,8 @@ li:hover {
 .pagination i {
     cursor: pointer;
     font-style: normal;
-    line-height: 2rem;
-    font-size: 1rem;
+    line-height: 2.5rem;
+    font-size: 1.5rem;
     text-shadow: 0px 1px 0px #f50;
     text-transform: uppercase;
 }

@@ -78,10 +78,6 @@ body.show-grid-view li {
 }
 
 body.show-grid-view li .thumbnail {
-    background-color: #f50;
-    background-size: cover;
-    height: inherit;
-    width: inherit;
     display: block;
 }
 
@@ -95,7 +91,8 @@ body.show-grid-view li.no-artwork .thumbnail {
 }
 
 body.show-grid-view li.no-artwork:hover .thumbnail {
-    background-color: brown;
+    background-color: #f50;
+/*    color: #000;*/
 }
 
 body.show-grid-view li:hover .thumbnail {
@@ -220,12 +217,22 @@ ul:not(:empty):not(.no-results) {
 }
 
 li .thumbnail {
-    display: none;
+    display: none;    
+    background-color: darkslateblue;
+/*    background-color: #f50;*/
+    color: #fff;
+    background-size: cover;
+    height: inherit;
+    width: inherit;
 }
 
 li:not(.no-results) {
     text-decoration: underline;
     cursor: pointer;
+}
+
+li:not(.no-results).no-artwork {
+    text-decoration: none;
 }
 
 li:not(:first-child) {
@@ -234,6 +241,15 @@ li:not(:first-child) {
 
 li:hover {
     color: #f50;
+}
+
+.selected .thumbnail {
+    background-blend-mode: screen;
+}
+
+.selected.no-artwork .thumbnail {
+    background-color: #f50;
+    box-shadow: inset 0 0 30px #fff;
 }
 
 .selected {

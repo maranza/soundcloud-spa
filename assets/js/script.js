@@ -22,7 +22,7 @@ $(function () {
         $next: $('.next'),
         $input: $('[name = search]'),
         queryOptions: {
-            limit: 30,
+            limit: 48,
         },
         playerOptions: {
             show_comments: false,

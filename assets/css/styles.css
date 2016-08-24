@@ -92,7 +92,7 @@ body.show-grid-view li.no-artwork .thumbnail {
 
 body.show-grid-view li.no-artwork:hover .thumbnail {
     background-color: #f50;
-/*    color: #000;*/
+    /*    color: #000;*/
 }
 
 body.show-grid-view li:hover .thumbnail {
@@ -217,9 +217,9 @@ ul:not(:empty):not(.no-results) {
 }
 
 li .thumbnail {
-    display: none;    
+    display: none;
     background-color: darkslateblue;
-/*    background-color: #f50;*/
+    /*    background-color: #f50;*/
     color: #fff;
     background-size: cover;
     height: inherit;
@@ -282,8 +282,13 @@ li:hover {
     font-style: normal;
     line-height: 2.5rem;
     font-size: 1.5rem;
-    text-shadow: 0px 1px 0px #f50;
+    /*    text-shadow: 0px 1px 0px #f50;*/
+    color: darkgray;
     text-transform: uppercase;
+}
+
+.pagination i:hover {
+    color: #666;
 }
 
 .prev {

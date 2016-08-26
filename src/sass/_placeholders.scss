@@ -1,0 +1,61 @@
+/* scss-lint:disable Compass::PropertyWithMixin */
+
+%display-none {
+    display: none;
+}
+
+%display-flex {
+    display: flex;
+}
+
+%display-block {
+    display: block;
+}
+
+%display-inline-block {
+    display: inline-block;
+}
+
+%float-left {
+    float: left;
+}
+
+%float-right {
+    float: right;
+}
+
+%position-relative {
+    position: relative;
+}
+
+%position-absolute {
+    position: absolute;
+}
+
+%position-fixed {
+    position: fixed;
+}
+
+%position-static {
+    position: static;
+}
+
+%no-margin {
+    margin: 0;
+}
+
+%no-padding {
+    padding: 0;
+}
+
+%full-width {
+    width: 100%;
+}
+
+%full-height {
+    height: 100%;
+}
+
+%font-gotham {
+    font-family: 'Gotham SSm A', 'Gotham SSm B', Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
+}

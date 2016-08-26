@@ -9,25 +9,28 @@
     <link href="assets/css/styles.css" rel="stylesheet">
 </head>
 
-<body class="show-loader show-grid-view">
-    <main class="clearfix">
-        <section class="player" style="visibility: hidden">
+<body id="body" class="show-loader show-grid-view">
+    <main id="main" class="clearfix">
+        <section id="player" class="player" style="visibility: hidden">
             <div class="player-loader loader">Loading...</div>
             <iframe id="sc-widget" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http://api.soundcloud.com/tracks/1848538"></iframe>
         </section>
         <section>
-            <input name="search" type="text" placeholder="search Soundcloud...">
-            <button class="btn toggle-grid-view icon clear-btn">&#9783;&nbsp;toggle grid view</button>
-            <ul class="clearfix"></ul>
-            <div class="pagination clearfix">
-                <i class="next" style="display: none">next</i>
-                <i class="prev" style="display: none">previous</i>
-            </div>
+            <nav id="nav">
+                <input id="search" name="search" type="text" placeholder="search Soundcloud...">
+                <button class="btn toggle-grid-view icon clear-btn">&#9783;&nbsp;toggle grid view</button>
+            </nav>
+            <ul id="list"></ul>
         </section>
+        <div id="pagination" class="pagination clearfix">
+            <i id="next" class="next" style="display: none">next</i>
+            <i id="prev" class="prev" style="display: none">previous</i>
+        </div>
     </main>
     <div class="global-loader loader">Loading...</div>
     <div class="overlay"></div>
     <script src="assets/js/vendor/jquery-3.1.0.min.js"></script>
+    <script src="assets/js/vendor/jquery.$$.min.js"></script>
     <script src="assets/js/vendor/jquery.ba-throttle-debounce.min.js"></script>
     <script src="assets/js/vendor/soundcloud/sdk-3.1.2.js"></script>
     <script src="assets/js/vendor/soundcloud/api.js"></script>

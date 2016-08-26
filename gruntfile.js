@@ -91,14 +91,14 @@ module.exports = function(grunt) {
     ]);
 
     /* watch-task callback override, hooks & alters compass config before it runs */
-    grunt.event.on('watch', function(action, filepath, target) {
-        switch (target) {
-            case 'sass':
-                var filepathArr = filepath.split(path.sep);
-                grunt.config('compass.dev.options.specify', _.indexOf(filepathArr, 'partials') >= 0 ? 'src/sass/' + GLOB + EXTENSION.precss : filepath);
-                break;
-        }
-    });
+    // grunt.event.on('watch', function(action, filepath, target) {
+    //     switch (target) {
+    //         case 'sass':
+    //             var filepathArr = filepath.split(path.sep);
+    //             grunt.config('compass.dev.options.specify', _.indexOf(filepathArr, 'partials') >= 0 ? 'src/sass/' + GLOB + EXTENSION.precss : filepath);
+    //             break;
+    //     }
+    // });
 
     grunt.registerTask('checknodedeps', function() {
         ncu.run({

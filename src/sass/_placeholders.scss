@@ -80,3 +80,17 @@
 %cursor-pointer {
     cursor: pointer;
 }
+
+%clearfix {
+    &:after,
+    &:before {
+        display: block;
+        content: '\0020';
+        height: 0;
+        overflow: hidden;
+    }
+
+    &:after {
+        clear: both;
+    }
+}

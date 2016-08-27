@@ -1,22 +1,9 @@
 /* scss-lint:disable Compass::PropertyWithMixin */
-
 @import 'normalize';
 
 /* bof: normalize */
 @include normalize;
 /* eof: normalize */
-
-.clearfix:after,
-.clearfix:before {
-    display: block;
-    content: '\0020';
-    height: 0;
-    overflow: hidden;
-}
-
-.clearfix:after {
-    clear: both;
-}
 
 * {
     margin: 0;

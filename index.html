@@ -15,12 +15,15 @@
             <div class="loader--player">Loading...</div>
             <iframe id="sc-widget" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http://api.soundcloud.com/tracks/1848538"></iframe>
         </section>
+        <nav id="nav">
+            <input id="search" name="search" type="text" placeholder="search Soundcloud...">
+            <button class="btn btn--style-1 btn--selected toggle-grid-view" data-action="grid-view" title="Toggle Grid-View">&#9783;&nbsp;grid view</button>
+            <button class="btn btn--style-1 toggle-repeat" data-action="repeat" title="Toggle Repeat">&#10608;&nbsp;repeat</button>
+            <!-- <button class="btn btn--style-1 toggle-repeat" title="Toggle Repeat">&#9854;&nbsp;toggle repeat</button> -->
+            <button class="btn btn--style-1 toggle-shuffle" data-action="shuffle" title="Toggle Shuffle">&#10547;&nbsp;shuffle</button>
+            <button class="btn btn--style-1 toggle-autoplay" data-action="autoplay" title="Toggle Autoplay (disabled)">&#9738;&nbsp;autoplay</button>
+        </nav>
         <section>
-            <nav id="nav">
-                <input id="search" name="search" type="text" placeholder="search Soundcloud...">
-                <button class="btn btn--style-1 btn--selected toggle-grid-view">&#9783;&nbsp;toggle grid view</button>
-                <button class="btn btn--style-1 toggle-repeat">&#9854;&nbsp;toggle repeat</button>
-            </nav>
             <ul id="list"></ul>
         </section>
         <div id="pagination" class="pagination clearfix">

@@ -1,3 +1,7 @@
+.clearfix {
+    @extend %clearfix;
+}
+
 .hide {
     @extend %display-none;
 

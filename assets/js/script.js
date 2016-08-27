@@ -15,8 +15,9 @@ $(function() {
     cache = {
         debug: true,
         test: true,
-        testKeyword: 'modulation',
+        testKeyword: 'ac dc',
         clientId: 'd3cc13db45cba4f1ff6846dc46b0ef8a',
+        played: [],
         queryOptions: {
             limit: 78,
             // limit: 48,
@@ -42,6 +43,7 @@ $(function() {
         '#search',
         '.toggle-grid-view',
         '.toggle-repeat',
+        '.toggle-shuffle',
     ];
 
     selectors.forEach(function(selector) {
@@ -110,6 +112,26 @@ $(function() {
         return cache.query.length && cache.tracks[0].length === 0;
     }
 
+    function getRandomTrackIndex() {
+        var randomIndex = getRandomInt(0, cache.tracks[cache.offset].length - 1);
+        if ($.inArray(randomIndex, cache.played) >= 0) {
+            if (cache.played.length == cache.tracks[cache.offset]) {
+                if (cache.debug) {
+                    console.log('played all song @ offset:', cache.offset);
+                }
+                return 0;
+            }
+            getRandomTrackIndex();
+        }
+        return randomIndex;
+    }
+
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
     /* beam me up scotty! */
 
     cache.$sc_widget.attr('height', parseFloat(cache.$player.css('height')));
@@ -132,7 +154,7 @@ $(function() {
 
         var nav__height = cache.$nav.outerHeight();
 
-        cache.$main.scroll($.debounce(100, function(e) {
+        cache.$main.scroll(function(e) {
             var node = cache.$main[0];
             if (cache.debug) {
                 console.log('-----------------');
@@ -146,8 +168,10 @@ $(function() {
             }
             // ref: http://stackoverflow.com/questions/3898130/check-if-a-user-has-scrolled-to-the-bottom (may have quirks in firefox)
             // second condition is to make sure we have enough clearance for once nav becomes fixed, otherwise scrolling will glitch back up.
-            cache.$body.toggleClass('fix-nav', this.scrollTop > nav__height && node.scrollHeight - node.scrollTop > nav__height);
-        }));
+            var test = this.scrollTop > nav__height && node.scrollHeight - node.scrollTop > nav__height;
+            cache.$body.toggleClass('body--fix-nav', test);
+            cache.$main.css('padding-top', test ? nav__height : 0);
+        });
 
         /* bind events */
 
@@ -185,6 +209,9 @@ $(function() {
                         cache.isPlayerVisible = true;
                     }
                     cache.player.play();
+                    if (cache.debug) {
+                        console.log('playing:', track.title);
+                    }
                 }
             }));
         });
@@ -217,13 +244,18 @@ $(function() {
             if (isEmptyResult()) {
                 return;
             }
-            $(this).toggleClass('btn--selected');
+            cache.$toggle_grid_view.toggleClass('btn--selected');
             cache.$body.toggleClass('show-grid-view');
         });
 
         cache.$toggle_repeat.click(function() {
             cache.repeat = cache.repeat ? false : true;
-            $(this).toggleClass('btn--selected');
+            cache.$toggle_repeat.toggleClass('btn--selected');
+        });
+
+        cache.$toggle_shuffle.click(function() {
+            cache.shuffle = cache.shuffle ? false : true;
+            cache.$toggle_shuffle.toggleClass('btn--selected');
         });
 
         // now test it ;)
@@ -232,9 +264,15 @@ $(function() {
         }
 
     }).bind(SC.Widget.Events.FINISH, function() {
+        cache.played.push(cache.index);
         var nextIndex = cache.index + 1,
             $items = $('li', cache.$list);
-        if (cache.tracks[cache.offset][nextIndex]) {
+        if (cache.shuffle) {
+            var randomIndex = getRandomTrackIndex();
+            if (cache.tracks[cache.offset][randomIndex]) {
+                $items.get(randomIndex).click();
+            }
+        } else if (cache.tracks[cache.offset][nextIndex]) {
             $items.get(nextIndex).click();
         } else if (cache.repeat) {
             $items.get(0).click();

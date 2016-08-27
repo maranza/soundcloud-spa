@@ -1,22 +1,22 @@
 {
-    "name": "soundcloud-player",
-    "version": "1.0.0",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/adi518/soundcloud-spa.git"
-    },
-    "dependencies": {
-        "grunt": "^1.0.1",
-        "grunt-contrib-compass": "^1.1.1",
-        "grunt-contrib-watch": "^1.0.0",
-        "grunt-contrib-htmlmin": "^1.4.0",
-        "grunt-postcss": "^0.8.0",
-        "autoprefixer": "^6.3.4",
-        "slash": "^1.0.0",
-        "path": "^0.12.7",
-        "lodash": "^4.13.1",
-        "npm-check-updates": "^2.6.1",
-        "postcss-filter-gradient": "^0.2.4"
-    }
+  "name": "soundcloud-player",
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adi518/soundcloud-spa.git"
+  },
+  "dependencies": {
+    "autoprefixer": "^6.3.4",
+    "grunt": "^1.0.1",
+    "grunt-contrib-compass": "^1.1.1",
+    "grunt-contrib-htmlmin": "^1.4.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-postcss": "^0.8.0",
+    "lodash": "^4.13.1",
+    "npm-check-updates": "^2.6.1",
+    "path": "^0.12.7",
+    "postcss-filter-gradient": "^0.2.4",
+    "slash": "^1.0.0"
+  }
 }

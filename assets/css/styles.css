@@ -2,103 +2,130 @@
 /* scss-lint:disable ColorVariable */
 /* scss-lint:disable ColorKeyword */
 /* scss-lint:disable Compass::PropertyWithMixin */
-/* line 3, ../../src/sass/_placeholders.scss */
+/* scss-lint:disable ColorVariable */
+/* line 4, ../../src/sass/_placeholders.scss */
 .hide, body.show-player-loader iframe, .overlay, .loader--global, .loader--player, .pagination {
   display: none;
 }
 
-/* line 7, ../../src/sass/_placeholders.scss */
-body.show-grid-view ul:not(:empty) {
+/* line 8, ../../src/sass/_placeholders.scss */
+body.show-grid-view ul {
   display: flex;
 }
 
-/* line 11, ../../src/sass/_placeholders.scss */
-iframe, body.show-loader .loader--global, body.show-loader .overlay, body.show-player-loader .loader--player, body.show-pagination .pagination, body.show-grid-view li .thumbnail, section.with-pagination .pagination {
+/* line 12, ../../src/sass/_placeholders.scss */
+iframe, body.show-loader .loader--global, body.show-loader .overlay, body.show-player-loader .loader--player, body.show-pagination .pagination, body.show-grid-view li .thumbnail {
   display: block;
 }
 
-/* line 15, ../../src/sass/_placeholders.scss */
+/* line 16, ../../src/sass/_placeholders.scss */
 .btni, .btnspan {
   display: inline-block;
 }
 
-/* line 23, ../../src/sass/_placeholders.scss */
+/* line 24, ../../src/sass/_placeholders.scss */
 [class*=' toggle-'],
 [class^=toggle-], .prev {
   float: left;
 }
 
-/* line 27, ../../src/sass/_placeholders.scss */
+/* line 28, ../../src/sass/_placeholders.scss */
 .next {
   float: right;
 }
 
-/* line 31, ../../src/sass/_placeholders.scss */
+/* line 32, ../../src/sass/_placeholders.scss */
 body.show-player-loader .player {
   position: relative;
 }
 
-/* line 35, ../../src/sass/_placeholders.scss */
-.loader--global, .loader--player, .pagination {
+/* line 36, ../../src/sass/_placeholders.scss */
+.loader--player, .pagination {
   position: absolute;
 }
 
-/* line 39, ../../src/sass/_placeholders.scss */
-body.body--fix-nav nav, .overlay {
+/* line 40, ../../src/sass/_placeholders.scss */
+body.body--fix-nav nav, .overlay, .loader--global {
   position: fixed;
 }
 
-/* line 47, ../../src/sass/_placeholders.scss */
+/* line 48, ../../src/sass/_placeholders.scss */
 .loader--global, .loader--player {
   margin: auto;
 }
 
-/* line 51, ../../src/sass/_placeholders.scss */
+/* line 52, ../../src/sass/_placeholders.scss */
 main {
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 56, ../../src/sass/_placeholders.scss */
+/* line 57, ../../src/sass/_placeholders.scss */
 body {
   margin: 0;
 }
 
-/* line 60, ../../src/sass/_placeholders.scss */
+/* line 61, ../../src/sass/_placeholders.scss */
 body {
   padding: 0;
 }
 
-/* line 64, ../../src/sass/_placeholders.scss */
+/* line 65, ../../src/sass/_placeholders.scss */
 body.body--fix-nav nav, .overlay, iframe, .pagination {
   width: 100%;
 }
 
-/* line 68, ../../src/sass/_placeholders.scss */
-html {
+/* line 69, ../../src/sass/_placeholders.scss */
+html, main {
   height: 100%;
 }
 
-/* line 72, ../../src/sass/_placeholders.scss */
-.btnbutton, body, input, ::-webkit-input-placeholder {
+/* line 73, ../../src/sass/_placeholders.scss */
+button.btn, body, input, ::-webkit-input-placeholder {
   font-family: 'Gotham SSm A', 'Gotham SSm B', Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
 }
 
-/* line 80, ../../src/sass/_placeholders.scss */
-.btn, li, .pagination i {
+/* line 81, ../../src/sass/_placeholders.scss */
+.btn, ul:not(:empty):not(.no-results) li, .pagination i {
   cursor: pointer;
 }
 
 /* line 85, ../../src/sass/_placeholders.scss */
+body.show-grid-view li {
+  /* scss-lint:disable VendorPrefix */
+  -webkit-user-select: none;
+  user-select: none;
+  /* scss-lint:disable VendorPrefix */
+}
+
+/* line 93, ../../src/sass/_placeholders.scss */
 .clearfix:after, nav:after, .clearfix:before, nav:before {
   display: block;
   content: '\0020';
   height: 0;
   overflow: hidden;
 }
-/* line 93, ../../src/sass/_placeholders.scss */
+/* line 101, ../../src/sass/_placeholders.scss */
 .clearfix:after, nav:after {
   clear: both;
+}
+
+/* line 106, ../../src/sass/_placeholders.scss */
+li .thumbnail:before {
+  content: '';
+}
+
+/* custom */
+/* line 112, ../../src/sass/_placeholders.scss */
+body.show-grid-view li.no-artwork .thumbnail {
+  font-size: initial;
+  display: table-cell;
+  vertical-align: middle;
+  font-size: .75rem;
+  text-align: center;
+  text-transform: capitalize;
+  text-shadow: 0 0 4px #000;
+  padding: 10px 5px;
 }
 
 /* scss-lint:disable Compass::PropertyWithMixin */
@@ -639,27 +666,27 @@ html *:after, html *:before, html *:not(head) {
   border-width: 0;
 }
 
-/* line 8, ../../src/sass/_components.scss */
+/* line 14, ../../src/sass/_components.scss */
 .btn {
   font-style: normal;
   text-transform: uppercase;
   transition: color .5s;
 }
-/* line 28, ../../src/sass/_components.scss */
+/* line 30, ../../src/sass/_components.scss */
 .btn.btn--style-1 {
   outline: 0;
   font-size: .75em;
   color: darkgray;
 }
-/* line 34, ../../src/sass/_components.scss */
+/* line 36, ../../src/sass/_components.scss */
 .btn.btn--style-1.btn--selected {
   color: #f50;
 }
-/* line 37, ../../src/sass/_components.scss */
+/* line 39, ../../src/sass/_components.scss */
 .btn.btn--style-1.btn--selected:hover {
   color: #f50;
 }
-/* line 42, ../../src/sass/_components.scss */
+/* line 44, ../../src/sass/_components.scss */
 .btn.btn--style-1:hover {
   color: #666;
 }
@@ -732,51 +759,49 @@ body.show-loader, body.show-player-loader {
 body.show-player-loader .player {
   visibility: visible !important;
 }
-/* line 82, ../../src/sass/styles.scss */
-body.show-grid-view ul:not(:empty) {
-  flex-direction: row;
+/* line 75, ../../src/sass/styles.scss */
+body.show-pagination main {
+  padding-bottom: calc(2.5rem + 2px + 1rem);
+}
+/* line 85, ../../src/sass/styles.scss */
+body.show-grid-view ul {
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 0;
+  margin-left: -5px;
+  margin-right: -5px;
 }
-/* line 97, ../../src/sass/styles.scss */
+/* line 95, ../../src/sass/styles.scss */
+body.show-grid-view ul:not(:empty):not(.no-results) li {
+  text-decoration: none;
+}
+/* line 98, ../../src/sass/styles.scss */
+body.show-grid-view ul:not(:empty):not(.no-results) li:hover {
+  padding-left: 0;
+  padding-right: 0;
+  background-color: none;
+}
+/* line 107, ../../src/sass/styles.scss */
 body.show-grid-view li {
-  flex-basis: auto;
   width: 100px;
   height: 100px;
   font-size: 0;
-  text-decoration: none;
   margin-top: 10px;
-  user-select: none;
+  margin-left: 5px;
+  margin-right: 5px;
 }
-/* line 118, ../../src/sass/styles.scss */
-body.show-grid-view li:not(:first-child) {
-  padding-top: 0;
-}
-/* line 123, ../../src/sass/styles.scss */
+/* line 117, ../../src/sass/styles.scss */
 body.show-grid-view li:hover .thumbnail {
   background-blend-mode: screen;
 }
-/* line 129, ../../src/sass/styles.scss */
-body.show-grid-view li.no-artwork .thumbnail {
-  font-size: initial;
-  display: table-cell;
-  vertical-align: middle;
-  font-size: .75rem;
-  text-align: center;
-  text-transform: capitalize;
-  text-shadow: 0 0 4px #000;
-}
-/* line 140, ../../src/sass/styles.scss */
+/* line 127, ../../src/sass/styles.scss */
 body.show-grid-view li.no-artwork:hover .thumbnail {
   background-color: #f50;
-  /*    color: #000;*/
 }
 
-/* line 154, ../../src/sass/styles.scss */
+/* line 140, ../../src/sass/styles.scss */
 main {
   width: 100%;
-  height: calc(100% - 2.5rem - 2px);
   padding: 0 10px 10px;
   box-shadow: 0 0 15px gray;
   background-blend-mode: overlay;
@@ -785,35 +810,35 @@ main {
   overflow-y: auto;
 }
 
-/* line 166, ../../src/sass/styles.scss */
+/* line 152, ../../src/sass/styles.scss */
 section + section {
   padding-top: 10px;
 }
 
-/* line 174, ../../src/sass/styles.scss */
+/* line 156, ../../src/sass/styles.scss */
 nav {
   transition: all .2s;
   padding-top: 10px;
 }
 
-/* line 180, ../../src/sass/styles.scss */
+/* line 162, ../../src/sass/styles.scss */
 [class*=' toggle-'],
 [class^=toggle-] {
   margin-top: 10px;
 }
-/* line 185, ../../src/sass/styles.scss */
+/* line 167, ../../src/sass/styles.scss */
 [class*=' toggle-']:not(:first-of-type),
 [class^=toggle-]:not(:first-of-type) {
   margin-left: 10px;
 }
 
-/* line 190, ../../src/sass/styles.scss */
+/* line 172, ../../src/sass/styles.scss */
 .player {
   margin-top: 10px;
   height: 166px;
 }
 
-/* line 195, ../../src/sass/styles.scss */
+/* line 177, ../../src/sass/styles.scss */
 .overlay {
   top: 0;
   right: 0;
@@ -823,7 +848,7 @@ nav {
   z-index: 9;
 }
 
-/* line 214, ../../src/sass/styles.scss */
+/* line 194, ../../src/sass/styles.scss */
 .loader--global {
   width: 5rem;
   height: 5rem;
@@ -832,7 +857,7 @@ nav {
   left: calc(50% - 2.5rem);
   z-index: 99;
 }
-/* line 224, ../../src/sass/styles.scss */
+/* line 205, ../../src/sass/styles.scss */
 .loader--player {
   width: 4rem;
   height: 4rem;
@@ -841,13 +866,13 @@ nav {
   left: calc(50% - 2rem);
 }
 
-/* line 234, ../../src/sass/styles.scss */
+/* line 216, ../../src/sass/styles.scss */
 iframe {
   box-shadow: 0 0 2px #ccc;
   border-radius: 4px;
 }
 
-/* line 243, ../../src/sass/styles.scss */
+/* line 225, ../../src/sass/styles.scss */
 input[type=text] {
   font-size: 1rem;
   width: 100%;
@@ -858,30 +883,39 @@ input[type=text] {
   box-shadow: 0 0 4px darkgray;
 }
 
-/* line 254, ../../src/sass/styles.scss */
+/* line 236, ../../src/sass/styles.scss */
 ::-webkit-input-placeholder {
   text-transform: capitalize;
 }
 
-/* line 259, ../../src/sass/styles.scss */
+/* line 241, ../../src/sass/styles.scss */
 ul:not(:empty) {
   margin-top: 10px;
   list-style-type: none;
 }
-
-/* line 264, ../../src/sass/styles.scss */
-li {
+/* line 246, ../../src/sass/styles.scss */
+ul:not(:empty):not(.no-results) li {
   text-decoration: underline;
 }
+/* line 250, ../../src/sass/styles.scss */
+ul:not(:empty):not(.no-results) li:hover {
+  color: #fff;
+  background-color: slategrey;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+/* line 261, ../../src/sass/styles.scss */
+.no-results li {
+  text-align: center;
+  text-transform: uppercase;
+}
+
 /* line 268, ../../src/sass/styles.scss */
-li:hover {
-  color: #f50;
+li:not(:first-child) {
+  margin-top: 10px;
 }
 /* line 272, ../../src/sass/styles.scss */
-li:not(:first-child) {
-  padding-top: 10px;
-}
-/* line 276, ../../src/sass/styles.scss */
 li .thumbnail {
   display: none;
   text-decoration: none;
@@ -891,36 +925,40 @@ li .thumbnail {
   height: inherit;
   width: inherit;
 }
+/* line 282, ../../src/sass/styles.scss */
+li .thumbnail:before {
+  display: block;
+}
 
-/* line 288, ../../src/sass/styles.scss */
+/* line 289, ../../src/sass/styles.scss */
 .truncated {
   text-decoration: inherit;
 }
 
-/* line 292, ../../src/sass/styles.scss */
+/* line 293, ../../src/sass/styles.scss */
 .selected {
   color: #f50;
 }
-/* line 295, ../../src/sass/styles.scss */
+/* line 296, ../../src/sass/styles.scss */
 .selected.no-artwork .thumbnail {
   background-color: #f50;
   box-shadow: inset 0 0 30px #fff;
 }
-/* line 300, ../../src/sass/styles.scss */
+/* line 301, ../../src/sass/styles.scss */
 .selected .thumbnail {
   background-blend-mode: screen;
 }
 
-/* line 305, ../../src/sass/styles.scss */
+/* line 306, ../../src/sass/styles.scss */
 .visited {
-  color: darkgray;
+  color: darkslateblue;
 }
-/* line 308, ../../src/sass/styles.scss */
+/* line 309, ../../src/sass/styles.scss */
 .visited.no-artwork .thumbnail {
   background-color: plum;
 }
 
-/* line 313, ../../src/sass/styles.scss */
+/* line 314, ../../src/sass/styles.scss */
 .pagination {
   line-height: 2.5rem;
   border-top: 2px solid lightgray;
@@ -929,8 +967,9 @@ li .thumbnail {
   padding-left: 10px;
   padding-right: 10px;
   left: 0;
+  opacity: .968;
 }
-/* line 325, ../../src/sass/styles.scss */
+/* line 327, ../../src/sass/styles.scss */
 .pagination i {
   font-style: normal;
   font-size: 1.5rem;
@@ -938,7 +977,7 @@ li .thumbnail {
   text-transform: uppercase;
   transition: color .5s;
 }
-/* line 333, ../../src/sass/styles.scss */
+/* line 335, ../../src/sass/styles.scss */
 .pagination i:hover {
   color: #666;
 }

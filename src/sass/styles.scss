@@ -72,6 +72,10 @@ body {
         }
 
         &-pagination {
+            main {
+                padding-bottom: calc(#{$pagination-outer-height} + 1rem);
+            }
+
             .pagination {
                 @extend %display-block;
             }
@@ -79,45 +83,35 @@ body {
 
         &-grid-view {
             ul {
-                &:not(:empty) {
-                    @extend %display-flex;
-                    // overflow: hidden;
-                    flex-direction: row;
-                    flex-wrap: wrap;
-                    justify-content: space-between;
-                    margin-top: 0;
-                }
+                @extend %display-flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                margin-top: 0;
+                margin-left: -5px;
+                margin-right: -5px;
 
-                // &:after {
-                //     content: '';
-                //     flex: auto;
-                // }
+                // override
+                &:not(:empty):not(.no-results) {
+                    li {
+                        text-decoration: none;
+
+                        &:hover {
+                            padding-left: 0;
+                            padding-right: 0;
+                            background-color: none;
+                        }
+                    }
+                }
             }
 
             li {
-                flex-basis: auto;
+                @extend %user-select-none;
                 width: $thumbnail-size;
                 height: $thumbnail-size;
                 font-size: 0;
-                text-decoration: none;
                 margin-top: 10px;
-                user-select: none;
-                // margin-right: 10px;
-
-                // &:not(:first-child) {
-                //     padding-top: 0;
-                // }
-
-                // &:nth-child(6n+0) {
-                //     margin-right: 0;
-                // }
-                //
-                // &:nth-child(n+7) {
-                //     margin-top: 10px;
-                // }
-                &:not(:first-child) {
-                    padding-top: 0;
-                }
+                margin-left: 5px;
+                margin-right: 5px;
 
                 &:hover {
                     .thumbnail {
@@ -127,19 +121,11 @@ body {
 
                 &.no-artwork {
                     .thumbnail {
-                        font-size: initial;
-                        display: table-cell;
-                        vertical-align: middle;
-                        font-size: .75rem;
-                        text-align: center;
-                        text-transform: capitalize;
-                        text-shadow: 0 0 4px #000;
-                        // border: 1px solid lightgray;
+                        @extend %thumbnail;
                     }
 
                     &:hover .thumbnail {
                         background-color: $orange;
-                        /*    color: #000;*/
                     }
                 }
 
@@ -153,8 +139,8 @@ body {
 
 main {
     @extend %auto-horizontal-margin;
+    @extend %full-height;
     width: $app-width;
-    height: calc(100% - #{$pagination-outer-height});
     padding: 0 10px 10px;
     box-shadow: 0 0 15px gray;
     background-blend-mode: overlay;
@@ -165,10 +151,6 @@ main {
 
 section + section {
     padding-top: 10px;
-}
-
-section.with-pagination .pagination {
-    @extend %display-block;
 }
 
 nav {
@@ -201,17 +183,16 @@ nav {
     z-index: 9;
 }
 
-
 .loader {
     &--global,
     &--player {
         @extend .loader; // roll our own
         @extend %display-none;
-        @extend %position-absolute;
         @extend %auto-margin;
     }
 
     &--global {
+        @extend %position-fixed;
         width: $global-loader-size;
         height: $global-loader-size;
         border-width: $global-loader-size / 9.09;
@@ -222,6 +203,7 @@ nav {
     }
 
     &--player {
+        @extend %position-absolute;
         width: $player-loader-size;
         height: $player-loader-size;
         border-width: $player-loader-size / 9.09;
@@ -259,18 +241,32 @@ input {
 ul:not(:empty) {
     margin-top: 10px;
     list-style-type: none;
+
+    &:not(.no-results) {
+        li {
+            @extend %cursor-pointer;
+            text-decoration: underline;
+
+            &:hover {
+                color: #fff;
+                background-color: slategrey;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+    }
+}
+
+.no-results {
+    li {
+        text-align: center;
+        text-transform: uppercase;
+    }
 }
 
 li {
-    @extend %cursor-pointer;
-    text-decoration: underline;
-
-    &:hover {
-        color: $orange;
-    }
-
     &:not(:first-child) {
-        padding-top: 10px;
+        margin-top: 10px;
     }
 
     .thumbnail {
@@ -282,6 +278,11 @@ li {
         background-size: cover;
         height: inherit;
         width: inherit;
+
+        &:before {
+            @extend %content-empty;
+            display: block;
+        }
     }
 }
 
@@ -303,7 +304,7 @@ li {
 }
 
 .visited {
-    color: darkgray;
+    color: darkslateblue;
 
     &.no-artwork .thumbnail {
         background-color: plum;
@@ -321,6 +322,7 @@ li {
     padding-left: 10px;
     padding-right: 10px;
     left: 0;
+    opacity: .968;
 
     i {
         @extend %cursor-pointer;

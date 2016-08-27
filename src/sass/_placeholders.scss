@@ -1,4 +1,5 @@
 /* scss-lint:disable Compass::PropertyWithMixin */
+/* scss-lint:disable ColorVariable */
 
 %display-none {
     display: none;
@@ -81,6 +82,13 @@
     cursor: pointer;
 }
 
+%user-select-none {
+    /* scss-lint:disable VendorPrefix */
+    -webkit-user-select: none;
+    user-select: none;
+    /* scss-lint:disable VendorPrefix */
+}
+
 %clearfix {
     &:after,
     &:before {
@@ -93,4 +101,21 @@
     &:after {
         clear: both;
     }
+}
+
+%content-empty {
+    content: '';
+}
+
+/* custom */
+
+%thumbnail {
+    font-size: initial;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: .75rem;
+    text-align: center;
+    text-transform: capitalize;
+    text-shadow: 0 0 4px #000;
+    padding: 10px 5px;
 }

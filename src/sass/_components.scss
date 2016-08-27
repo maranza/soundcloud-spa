@@ -5,6 +5,12 @@
     border-width: 0;
 }
 
+button {
+    &.btn {
+        @extend %font-family-gotham;
+    }
+}
+
 .btn {
     @extend %cursor-pointer;
     font-style: normal;
@@ -14,10 +20,6 @@
     &i,
     &span {
         @extend %display-inline-block;
-    }
-
-    &button {
-        @extend %font-family-gotham;
     }
 
     &.btn {

@@ -66,7 +66,7 @@ $(function() {
                 markup += '<li class="' + (!track.artwork_url ? 'no-artwork' : '') + '" title="' + track.title + '"><span class="thumbnail" style="background-image: url(' + (track.artwork_url || '') + ')"><span class="truncated">' + track.title.substring(0, 10) + '</span></span>' + track.title + '</li>';
             });
         } else {
-            markup = '<li>no results found</li>';
+            markup = '<li>Your search - <b>' + cache.searchQuery + '</b> - did not match any tracks.</li>';
             cache.$body.removeClass('show-grid-view');
         }
         cache.$list.toggleClass('no-results', !tracks.length).html(markup);
@@ -196,9 +196,7 @@ $(function() {
                     .siblings('.selected').removeClass('selected')
                             .addClass('visited');
             /* beautify ignore:end */
-            if (track.artwork_url) {
-                cache.$main.css('background-image', 'url(' + track.artwork_url + ')');
-            }
+            cache.$main.css('background-image', 'url(' + (track.artwork_url || '') + ')');
             cache.$body.addClass('show-player-loader');
             cache.$player.css('visibility', 'visible');
             cache.player.load(track.permalink_url, $.extend({}, cache.playerOptions, {
@@ -236,6 +234,7 @@ $(function() {
             if (this.value === '') {
                 return;
             }
+            cache.searchQuery = this.value;
             getTracks(this.value);
         }));
 

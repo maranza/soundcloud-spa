@@ -12,13 +12,14 @@
 <body id="body" class="show-loader show-grid-view">
     <main id="main" class="clearfix">
         <section id="player" class="player" style="visibility: hidden">
-            <div class="player-loader loader">Loading...</div>
+            <div class="loader--player">Loading...</div>
             <iframe id="sc-widget" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http://api.soundcloud.com/tracks/1848538"></iframe>
         </section>
         <section>
             <nav id="nav">
                 <input id="search" name="search" type="text" placeholder="search Soundcloud...">
-                <button class="btn toggle-grid-view icon clear-btn">&#9783;&nbsp;toggle grid view</button>
+                <button class="btn btn--style-1 btn--selected toggle-grid-view">&#9783;&nbsp;toggle grid view</button>
+                <button class="btn btn--style-1 toggle-repeat">&#9854;&nbsp;toggle repeat</button>
             </nav>
             <ul id="list"></ul>
         </section>
@@ -27,7 +28,7 @@
             <i id="prev" class="prev" style="display: none">previous</i>
         </div>
     </main>
-    <div class="global-loader loader">Loading...</div>
+    <div class="loader--global">Loading...</div>
     <div class="overlay"></div>
     <script src="assets/js/vendor/jquery-3.1.0.min.js"></script>
     <script src="assets/js/vendor/jquery.$$.min.js"></script>

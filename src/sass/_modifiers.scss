@@ -1,0 +1,7 @@
+.hide {
+    @extend %display-none;
+}
+
+.hide--important {
+    display: none !important;
+}

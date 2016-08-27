@@ -16,6 +16,10 @@
     display: inline-block;
 }
 
+%display-inline {
+    display: inline-block;
+}
+
 %float-left {
     float: left;
 }
@@ -40,6 +44,15 @@
     position: static;
 }
 
+%auto-margin {
+    margin: auto;
+}
+
+%auto-horizontal-margin {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 %no-margin {
     margin: 0;
 }
@@ -56,6 +69,14 @@
     height: 100%;
 }
 
-%font-gotham {
+%font-family-gotham {
     font-family: 'Gotham SSm A', 'Gotham SSm B', Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
+}
+
+%half-border-radius {
+    border-radius: 50%;
+}
+
+%cursor-pointer {
+    cursor: pointer;
 }

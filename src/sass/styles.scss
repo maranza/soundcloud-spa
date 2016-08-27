@@ -7,25 +7,17 @@
 @import 'reset';
 @import 'fonts';
 @import 'components';
+@import 'modifiers';
 @import 'loader';
-
-.hide {
-    @extend %display-none;
-}
-
-.hide--important {
-    display: none !important;
-}
 
 html {
     @extend %full-height;
-    font-size: 100%;
-    line-height: 1.5em;
-    /* vertical rhythm */
+    font-size: 100%; // = cross-browser 16px
+    line-height: 1.5em; // vertical rhythm
 }
 
 body {
-    @extend %font-gotham;
+    @extend %font-family-gotham;
     @extend %no-margin;
     @extend %no-padding;
     height: inherit;
@@ -63,7 +55,7 @@ body {
         }
 
         .player {
-            position: relative;
+            @extend %position-relative;
             visibility: visible !important;
         }
 
@@ -73,11 +65,6 @@ body {
     }
 
     &.show-grid-view {
-        .list-container {
-            position: relative;
-            // overflow: hidden;
-        }
-
         ul {
             &:not(:empty) {
                 @extend %display-flex;
@@ -101,6 +88,7 @@ body {
             font-size: 0;
             text-decoration: none;
             margin-top: 10px;
+            user-select: none;
             // margin-right: 10px;
 
             // &:not(:first-child) {
@@ -157,17 +145,16 @@ body {
 }
 
 main {
+    @extend %auto-horizontal-margin;
     width: $app-width;
-    // min-height: inherit;
-    margin-left: auto;
-    margin-right: auto;
+    height: calc(100% - #{$pagination-outer-height});
     padding: 0 10px 10px;
+    box-shadow: 0 0 15px gray;
     background-blend-mode: overlay;
     background-size: cover;
     background-color: whitesmoke;
-    box-shadow: 0 0 15px gray;
     overflow-y: auto;
-    height: calc(100% - 2px - 2.5rem);
+    // min-height: inherit;
 }
 
 section + section {
@@ -183,14 +170,7 @@ nav {
 }
 
 .toggle-grid-view {
-    outline: 0;
     margin-top: 10px;
-    font-size: .75em;
-    color: darkgray;
-
-    &:hover {
-        color: #666;
-    }
 }
 
 .player {
@@ -200,8 +180,8 @@ nav {
 
 .overlay {
     @extend %display-none;
-    position: absolute;
-    width: 100%;
+    @extend %position-absolute;
+    @extend %full-width;
     min-height: inherit;
     background-color: whitesmoke;
     z-index: 9;
@@ -211,28 +191,29 @@ nav {
 /* roll our own */
 
 .loader {
-    &.global-loader {
-        z-index: 99;
-    }
-
-    &.global-loader,
-    &.player-loader {
-        display: none;
-        margin: auto;
-        position: absolute;
+    &--global,
+    &--player {
+        @extend .loader;
+        @extend %display-none;
+        @extend %position-absolute;
+        @extend %auto-margin;
         top: calc(50% - 5em);
         left: calc(50% - 5em);
+    }
+
+    &--global {
+        z-index: 99;
     }
 }
 
 iframe {
-    width: 100%;
+    @extend %full-width;
     box-shadow: 0 0 2px #ccc;
     border-radius: 4px;
 }
 
 input {
-    @extend %font-gotham;
+    @extend %font-family-gotham;
 
     &[type = text] {
         font-size: 1rem;
@@ -246,7 +227,7 @@ input {
 }
 
 ::-webkit-input-placeholder {
-    @extend %font-gotham;
+    @extend %font-family-gotham;
     text-transform: capitalize;
 }
 
@@ -256,8 +237,8 @@ ul:not(:empty) {
 }
 
 li {
+    @extend %cursor-pointer;
     text-decoration: underline;
-    cursor: pointer;
 
     &:hover {
         color: $orange;
@@ -306,18 +287,18 @@ li {
 .pagination {
     @extend %full-width;
     @extend %display-none;
+    @extend %position-absolute;
     // margin-top: 10px;
-    border-top: 2px solid lightgray;
-    position: absolute;
+    line-height: $pagination-height;
+    border-top: $pagination-border-top-width solid lightgray;
     bottom: 0;
     background-color: whitesmoke;
     padding-left: 10px;
     padding-right: 10px;
     left: 0;
-    line-height: $pagination-height;
 
     i {
-        cursor: pointer;
+        @extend %cursor-pointer;
         font-style: normal;
         font-size: 1.5rem;
         color: darkgray;

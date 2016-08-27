@@ -3,3 +3,7 @@ $app-width: 100% !default;
 $app-min-width: 670px;
 $thumbnail-size: 100px;
 $pagination-height: 2.5rem;
+$pagination-border-top-width: 2px;
+$pagination-outer-height: unquote("#{$pagination-height} + #{$pagination-border-top-width}");
+$global-loader-size: 2;
+$player-loader-size: 2;

@@ -14,6 +14,8 @@ $(function() {
 
     cache = {
         debug: true,
+        test: true,
+        testKeyword: 'modulation',
         clientId: 'd3cc13db45cba4f1ff6846dc46b0ef8a',
         queryOptions: {
             limit: 78,
@@ -31,12 +33,15 @@ $(function() {
         '#body',
         '#main',
         '#nav',
+        '#sc-widget',
         '#list',
         '#player',
         '#pagination',
         '#prev',
         '#next',
         '#search',
+        '.toggle-grid-view',
+        '.toggle-repeat',
     ];
 
     selectors.forEach(function(selector) {
@@ -44,7 +49,7 @@ $(function() {
             /* beautify ignore:start */
             var _selector = selector;
             _selector = _selector.replace(/[#]/g, '')
-                                    .replace(/\./g, ' ')
+                                    .replace(/\./g, '')
                                         .replace(/[-]/g, '_');
             /* beautify ignore:end */
             cache['$' + _selector] = $$(selector);
@@ -82,7 +87,7 @@ $(function() {
             cache.$body.addClass('show-pagination');
             cache.$next.toggle(true);
         } else {
-            selectors.get('#element').$body.removeClass('show-pagination');
+            cache.$body.removeClass('show-pagination');
         }
         // cache.$main.css('height', 'calc(100% - ' + cache.$pagination.outerHeight() + 'px)');
     }
@@ -107,14 +112,14 @@ $(function() {
 
     /* beam me up scotty! */
 
-    $$('iframe').attr('height', parseFloat(cache.$player.css('height')));
+    cache.$sc_widget.attr('height', parseFloat(cache.$player.css('height')));
 
     SC.initialize({
         client_id: cache.clientId
     });
 
     try {
-        cache.player = SC.Widget('sc-widget');
+        cache.player = SC.Widget(cache.$sc_widget[0]);
     } catch (e) {
         console.log('soundcloud widget failed to initiate!');
     }
@@ -127,10 +132,22 @@ $(function() {
 
         var nav__height = cache.$nav.outerHeight();
 
-        cache.$main.scroll(function(e) {
-            // second condition is to make sure we have enough clearance once nav becomes fixed
-            cache.$body.toggleClass('fix-nav', this.scrollTop > nav__height && (this.scrollTop - nav__height) > nav__height);
-        });
+        cache.$main.scroll($.debounce(100, function(e) {
+            var node = cache.$main[0];
+            if (cache.debug) {
+                console.log('-----------------');
+                console.log('-----------------');
+                console.log('-----------------');
+                console.log('scrollHeight', node.scrollHeight);
+                console.log('scrollTop', node.scrollTop);
+                console.log('clientHeight', node.clientHeight);
+                console.log('navigation height', nav__height);
+                console.log('scrollHeight - scrollTop =', node.scrollHeight - node.scrollTop);
+            }
+            // ref: http://stackoverflow.com/questions/3898130/check-if-a-user-has-scrolled-to-the-bottom (may have quirks in firefox)
+            // second condition is to make sure we have enough clearance for once nav becomes fixed, otherwise scrolling will glitch back up.
+            cache.$body.toggleClass('fix-nav', this.scrollTop > nav__height && node.scrollHeight - node.scrollTop > nav__height);
+        }));
 
         /* bind events */
 
@@ -149,6 +166,8 @@ $(function() {
             }
             var $item = $(this),
                 track = cache.tracks[cache.offset][$item.index()];
+
+            cache.index = $item.index();
             /* beautify ignore:start */
             $item.addClass('selected')
                     .siblings('.selected').removeClass('selected')
@@ -194,14 +213,31 @@ $(function() {
             getTracks(this.value);
         }));
 
-        $$('.toggle-grid-view').click(function() {
+        cache.$toggle_grid_view.click(function() {
             if (isEmptyResult()) {
                 return;
             }
+            $(this).toggleClass('btn--selected');
             cache.$body.toggleClass('show-grid-view');
         });
 
+        cache.$toggle_repeat.click(function() {
+            cache.repeat = cache.repeat ? false : true;
+            $(this).toggleClass('btn--selected');
+        });
+
         // now test it ;)
-        cache.$search.val('modulation').keyup();
+        if (cache.test) {
+            cache.$search.val(cache.testKeyword).keyup();
+        }
+
+    }).bind(SC.Widget.Events.FINISH, function() {
+        var nextIndex = cache.index + 1,
+            $items = $('li', cache.$list);
+        if (cache.tracks[cache.offset][nextIndex]) {
+            $items.get(nextIndex).click();
+        } else if (cache.repeat) {
+            $items.get(0).click();
+        }
     });
 });

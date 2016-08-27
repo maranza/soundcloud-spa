@@ -1,21 +1,47 @@
+/* scss-lint:disable ColorKeyword */
+/* scss-lint:disable ColorVariable */
+%clear-btn {
+    background-color: transparent;
+    border-width: 0;
+}
+
 .btn {
+    @extend %cursor-pointer;
     font-style: normal;
     text-transform: uppercase;
-    cursor: pointer;
     transition: color .5s;
 
-    &:not(button):not(span):not(i) {
+    &i,
+    &span {
         @extend %display-inline-block;
     }
 
-    &.clear-btn {
-        background-color: transparent;
-        border-width: 0;
+    &button {
+        @extend %font-family-gotham;
     }
-}
 
-button {
     &.btn {
-        @extend %font-gotham;
+        &--clear {
+            @extend %clear-btn;
+        }
+
+        &--style-1 {
+            @extend %clear-btn;
+            outline: 0;
+            font-size: .75em;
+            color: darkgray;
+
+            &.btn--selected {
+                color: $orange;
+
+                &:hover {
+                    color: $orange;
+                }
+            }
+
+            &:hover {
+                color: #666;
+            }
+        }
     }
 }

@@ -19,8 +19,7 @@ $(function() {
         clientId: 'd3cc13db45cba4f1ff6846dc46b0ef8a',
         played: [],
         queryOptions: {
-            limit: 78,
-            // limit: 48,
+            limit: 200,
         },
         playerOptions: {
             show_comments: false,

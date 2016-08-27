@@ -1,3 +1,3 @@
-@function prefix-entity-space($name) {
+@function prefix-space($name) {
     @return ' ' + $name;
 }

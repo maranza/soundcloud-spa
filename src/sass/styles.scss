@@ -177,7 +177,7 @@ nav {
     padding-top: 10px;
 }
 
-[class*='#{prefix-entity-space(toggle-)}'],
+[class*='#{prefix-space(toggle-)}'],
 [class^=toggle-] {
     @extend %float-left;
     margin-top: 10px;
@@ -199,18 +199,13 @@ nav {
     @include position-args(top 0 right 0 bottom 0 left 0);
     background-color: whitesmoke;
     z-index: 9;
-    // top: 0;
-    // right: 0;
-    // bottom: 0;
-    // left: 0;
 }
 
-/* roll our own */
 
 .loader {
     &--global,
     &--player {
-        @extend .loader;
+        @extend .loader; // roll our own
         @extend %display-none;
         @extend %position-absolute;
         @extend %auto-margin;

@@ -823,8 +823,7 @@ nav {
   z-index: 9;
 }
 
-/* roll our own */
-/* line 219, ../../src/sass/styles.scss */
+/* line 214, ../../src/sass/styles.scss */
 .loader--global {
   width: 5rem;
   height: 5rem;
@@ -833,7 +832,7 @@ nav {
   left: calc(50% - 2.5rem);
   z-index: 99;
 }
-/* line 229, ../../src/sass/styles.scss */
+/* line 224, ../../src/sass/styles.scss */
 .loader--player {
   width: 4rem;
   height: 4rem;
@@ -842,13 +841,13 @@ nav {
   left: calc(50% - 2rem);
 }
 
-/* line 239, ../../src/sass/styles.scss */
+/* line 234, ../../src/sass/styles.scss */
 iframe {
   box-shadow: 0 0 2px #ccc;
   border-radius: 4px;
 }
 
-/* line 248, ../../src/sass/styles.scss */
+/* line 243, ../../src/sass/styles.scss */
 input[type=text] {
   font-size: 1rem;
   width: 100%;
@@ -859,30 +858,30 @@ input[type=text] {
   box-shadow: 0 0 4px darkgray;
 }
 
-/* line 259, ../../src/sass/styles.scss */
+/* line 254, ../../src/sass/styles.scss */
 ::-webkit-input-placeholder {
   text-transform: capitalize;
 }
 
-/* line 264, ../../src/sass/styles.scss */
+/* line 259, ../../src/sass/styles.scss */
 ul:not(:empty) {
   margin-top: 10px;
   list-style-type: none;
 }
 
-/* line 269, ../../src/sass/styles.scss */
+/* line 264, ../../src/sass/styles.scss */
 li {
   text-decoration: underline;
 }
-/* line 273, ../../src/sass/styles.scss */
+/* line 268, ../../src/sass/styles.scss */
 li:hover {
   color: #f50;
 }
-/* line 277, ../../src/sass/styles.scss */
+/* line 272, ../../src/sass/styles.scss */
 li:not(:first-child) {
   padding-top: 10px;
 }
-/* line 281, ../../src/sass/styles.scss */
+/* line 276, ../../src/sass/styles.scss */
 li .thumbnail {
   display: none;
   text-decoration: none;
@@ -893,35 +892,35 @@ li .thumbnail {
   width: inherit;
 }
 
-/* line 293, ../../src/sass/styles.scss */
+/* line 288, ../../src/sass/styles.scss */
 .truncated {
   text-decoration: inherit;
 }
 
-/* line 297, ../../src/sass/styles.scss */
+/* line 292, ../../src/sass/styles.scss */
 .selected {
   color: #f50;
 }
-/* line 300, ../../src/sass/styles.scss */
+/* line 295, ../../src/sass/styles.scss */
 .selected.no-artwork .thumbnail {
   background-color: #f50;
   box-shadow: inset 0 0 30px #fff;
 }
-/* line 305, ../../src/sass/styles.scss */
+/* line 300, ../../src/sass/styles.scss */
 .selected .thumbnail {
   background-blend-mode: screen;
 }
 
-/* line 310, ../../src/sass/styles.scss */
+/* line 305, ../../src/sass/styles.scss */
 .visited {
   color: darkgray;
 }
-/* line 313, ../../src/sass/styles.scss */
+/* line 308, ../../src/sass/styles.scss */
 .visited.no-artwork .thumbnail {
   background-color: plum;
 }
 
-/* line 318, ../../src/sass/styles.scss */
+/* line 313, ../../src/sass/styles.scss */
 .pagination {
   line-height: 2.5rem;
   border-top: 2px solid lightgray;
@@ -931,7 +930,7 @@ li .thumbnail {
   padding-right: 10px;
   left: 0;
 }
-/* line 330, ../../src/sass/styles.scss */
+/* line 325, ../../src/sass/styles.scss */
 .pagination i {
   font-style: normal;
   font-size: 1.5rem;
@@ -939,7 +938,7 @@ li .thumbnail {
   text-transform: uppercase;
   transition: color .5s;
 }
-/* line 338, ../../src/sass/styles.scss */
+/* line 333, ../../src/sass/styles.scss */
 .pagination i:hover {
   color: #666;
 }

@@ -3,7 +3,7 @@
 * `git clone https://github.com/adi518/soundcloud-spa.git`
 
 ## Run
-Simply hit `run.bat` to view @ localhost:8000. Alternatively, you can use `live-preview`, such as in [Brackets](http://brackets.io/).
+Hit `run.bat` to view @ localhost:8000. Alternatively, you can use `live-preview`, such as in [Brackets](http://brackets.io/).
 
 ## Support
 Please [open an issue](https://github.com/adi518/soundcloud-spa/issues) for support.

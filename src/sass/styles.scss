@@ -288,7 +288,6 @@ li {
     @extend %full-width;
     @extend %display-none;
     @extend %position-absolute;
-    // margin-top: 10px;
     line-height: $pagination-height;
     border-top: $pagination-border-top-width solid lightgray;
     bottom: 0;

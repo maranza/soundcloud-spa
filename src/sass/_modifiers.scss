@@ -1,7 +1,7 @@
 .hide {
     @extend %display-none;
-}
 
-.hide--important {
-    display: none !important;
+    &--important {
+        display: none !important;
+    }
 }

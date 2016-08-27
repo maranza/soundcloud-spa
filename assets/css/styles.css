@@ -665,7 +665,7 @@ html *:after, html *:before, html *:not(head) {
   color: #666;
 }
 
-/* line 5, ../../src/sass/_modifiers.scss */
+/* line 4, ../../src/sass/_modifiers.scss */
 .hide--important {
   display: none !important;
 }
@@ -914,7 +914,7 @@ li .thumbnail {
   padding-right: 10px;
   left: 0;
 }
-/* line 300, ../../src/sass/styles.scss */
+/* line 299, ../../src/sass/styles.scss */
 .pagination i {
   font-style: normal;
   font-size: 1.5rem;
@@ -922,7 +922,7 @@ li .thumbnail {
   text-transform: uppercase;
   transition: color .5s;
 }
-/* line 308, ../../src/sass/styles.scss */
+/* line 307, ../../src/sass/styles.scss */
 .pagination i:hover {
   color: #666;
 }

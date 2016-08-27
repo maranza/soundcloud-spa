@@ -154,7 +154,7 @@ $(function() {
 
         var nav__height = cache.$nav.outerHeight();
 
-        cache.$main.scroll(function(e) {
+        cache.$main.scroll($.debounce(100, function(e) {
             var node = cache.$main[0];
             if (cache.debug) {
                 console.log('-----------------');
@@ -171,7 +171,7 @@ $(function() {
             var test = this.scrollTop > nav__height && node.scrollHeight - node.scrollTop > nav__height;
             cache.$body.toggleClass('body--fix-nav', test);
             cache.$main.css('padding-top', test ? nav__height : 0);
-        });
+        }));
 
         /* bind events */
 

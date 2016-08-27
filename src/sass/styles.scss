@@ -2,6 +2,7 @@
 /* scss-lint:disable ColorVariable */
 /* scss-lint:disable ColorKeyword */
 @import 'functions';
+@import 'mixins';
 @import 'settings';
 @import 'vars';
 @import 'placeholders';
@@ -46,7 +47,7 @@ body {
         }
 
         &-loader {
-            .global-loader {
+            .loader--global {
                 @extend %display-block;
             }
 
@@ -65,7 +66,7 @@ body {
                 visibility: visible !important;
             }
 
-            .player-loader {
+            .loader--player {
                 @extend %display-block;
             }
         }
@@ -186,10 +187,6 @@ nav {
     }
 }
 
-// .toggle-grid-view {
-//     margin-top: 10px;
-// }
-
 .player {
     margin-top: 10px;
     height: 166px;
@@ -197,12 +194,15 @@ nav {
 
 .overlay {
     @extend %display-none;
-    @extend %position-absolute;
+    @extend %position-fixed;
     @extend %full-width;
-    min-height: inherit;
+    @include position-args(top 0 right 0 bottom 0 left 0);
     background-color: whitesmoke;
     z-index: 9;
-    top: 0;
+    // top: 0;
+    // right: 0;
+    // bottom: 0;
+    // left: 0;
 }
 
 /* roll our own */
@@ -214,12 +214,25 @@ nav {
         @extend %display-none;
         @extend %position-absolute;
         @extend %auto-margin;
-        top: calc(50% - 5em);
-        left: calc(50% - 5em);
     }
 
     &--global {
+        width: $global-loader-size;
+        height: $global-loader-size;
+        border-width: $global-loader-size / 9.09;
+        $calc-value: unquote("50% - #{$global-loader-size / 2}");
+        top: calc(#{$calc-value});
+        left: calc(#{$calc-value});
         z-index: 99;
+    }
+
+    &--player {
+        width: $player-loader-size;
+        height: $player-loader-size;
+        border-width: $player-loader-size / 9.09;
+        $calc-value: unquote("50% - #{$player-loader-size / 2}");
+        top: calc(#{$calc-value});
+        left: calc(#{$calc-value});
     }
 }
 
